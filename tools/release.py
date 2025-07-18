@@ -16,8 +16,8 @@ def get_active_branch_name():
             return line.partition("refs/heads/")[2]
 
 
-if not get_active_branch_name() == "release":
-    print("aborting, not on 'release' branch")
+if not get_active_branch_name() == "master":
+    print("aborting, not on 'master' branch")
     sys.exit(1)
 
 # Update the manifest
@@ -47,10 +47,18 @@ cmd.run("git add VERSION")
 cmd.run("git add module.json")
 cmd.run(f'git commit -m "Update manifest to {module_version}"')
 cmd.run(f'git tag -a v{module_version} -m "Release of {module_version}"')
-cmd.run("git push origin release")
+cmd.run("git push origin master")
 cmd.run(f'git push origin v{module_version}')
 
-# Get token and create a release
-token = Path("~/Documents/signing/TOKEN_VTT").expanduser().read_text()
-cmd.run(f'githubrelease --github-token {token} release Jerakin/p5e-foundryVTT create v{module_version} --publish --name "v{module_version}" "dist/Pokemon5e.zip"')
+# Note: GitHub release creation requires a personal access token
+# You can create one at: https://github.com/settings/tokens
+# For now, we'll skip the automatic GitHub release creation
+print(f"Version {module_version} has been tagged and pushed.")
+print(f"To create a GitHub release, go to: https://github.com/Albydo/p5e-foundryVTT/releases/new")
+print(f"Use tag: v{module_version}")
+print(f"Upload the file: dist/pokemon5e.zip")
+
+# Uncomment and modify the following lines if you have a GitHub token:
+# token = Path("~/Documents/signing/TOKEN_VTT").expanduser().read_text()
+# cmd.run(f'githubrelease --github-token {token} release Albydo/p5e-foundryVTT create v{module_version} --publish --name "v{module_version}" "dist/pokemon5e.zip"')
 

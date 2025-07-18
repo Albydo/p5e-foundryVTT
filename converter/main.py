@@ -98,15 +98,15 @@ def package():
             pack_folder(util.BUILD / pack_name, util.DIST_MODULE / pack_def["path"])
 
     # Move the images
-    shutil.copytree(util.ASSETS / "images" / "pokemon", util.DIST / "Pokemon5e" / "images" / "pokemon")
-    shutil.copytree(util.ASSETS / "images" / "tokens", util.DIST / "Pokemon5e" / "images" / "tokens",
+    shutil.copytree(util.ASSETS / "images" / "pokemon", util.DIST / "pokemon5e" / "images" / "pokemon")
+    shutil.copytree(util.ASSETS / "images" / "tokens", util.DIST / "pokemon5e" / "images" / "tokens",
                     ignore=lambda _, list_of_content: [x for x in list_of_content if x.endswith(".png")])
 
     with (util.DIST_MODULE / "module.json").open("w", encoding="utf-8") as fp:
         json.dump(foundry.module_definition, fp, indent=2, ensure_ascii=False)
 
-    shutil.make_archive(util.DIST / "Pokemon5e", "zip", util.DIST / "Pokemon5e")
-    shutil.rmtree(util.DIST / "Pokemon5e")
+    shutil.make_archive(util.DIST / "pokemon5e", "zip", util.DIST / "pokemon5e")
+    shutil.rmtree(util.DIST / "pokemon5e")
 
 
 def make():

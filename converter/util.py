@@ -31,9 +31,20 @@ def download():
     CACHE.mkdir(exist_ok=True)
     files = ['leveling.json', 'pokedex_extra.json', 'abilities.json']
     for f in files:
-        r = requests.get(f'https://raw.githubusercontent.com/Jerakin/Pokedex5E/master/assets/datafiles/{f}', allow_redirects=True)
-        with open(CACHE / f, 'w', encoding="utf-8") as fp:
-            fp.write(json.dumps(r.json(), ensure_ascii=False))
+        cache_file = CACHE / f
+        if cache_file.exists():
+            continue  # Skip download if file already exists
+        try:
+            r = requests.get(f'https://raw.githubusercontent.com/Jerakin/Pokedex5E/master/assets/datafiles/{f}', allow_redirects=True)
+            if r.status_code == 200:
+                with open(cache_file, 'w', encoding="utf-8") as fp:
+                    fp.write(json.dumps(r.json(), ensure_ascii=False))
+        except Exception as e:
+            print(f"Warning: Could not download {f}: {e}")
+            # Create empty file if download fails
+            if not cache_file.exists():
+                with open(cache_file, 'w', encoding="utf-8") as fp:
+                    json.dump({}, fp)
 
 
 def __load(path):

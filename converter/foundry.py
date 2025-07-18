@@ -71,19 +71,27 @@ sr_map = {
     0.5: "1/2",
 }
 
+module_id = "pokemon5e"
 module_name = "Pokemon5e"
 module_version = (Path(__file__).parent.parent / "VERSION").read_text()
 module_definition = {
-    "name": module_name,
+    "id": module_id,
     "title": module_name,
     "description": "The Wonderful World of Pokémon - in Dungeons & Dragons 5E",
-    "author": "Jerakin",
+    "authors": [
+        {
+            "name": "Jerakin"
+        }
+    ],
     "version": module_version,
-    "minimumCoreVersion": "0.5.0",
-    "compatibleCoreVersion": "0.5.5",
-    "url": "https://github.com/Jerakin/p5e-foundryVTT",
-    "manifest": "https://raw.githubusercontent.com/Jerakin/p5e-foundryVTT/release/module.json",
-    "download": f"https://github.com/Jerakin/p5e-foundryVTT/releases/download/v{module_version}/Pokemon5e.zip",
+    "compatibleCoreVersion": "12",
+    "compatibility": {
+        "minimum": "10",
+        "verified": "12"
+    },
+    "url": "https://github.com/Albydo/p5e-foundryVTT",
+    "manifest": "https://raw.githubusercontent.com/Albydo/p5e-foundryVTT/master/module.json",
+    "download": f"https://github.com/Albydo/p5e-foundryVTT/releases/download/v{module_version}/pokemon5e.zip",
     "packs": [
     ]
 }
@@ -94,21 +102,21 @@ packs = {
         "name": "pokemon",
         "label": "Pokemon",
         "path": "packs/p5e-pokemon.db",
-        "entity": "Actor",
-        "module": module_name
+        "type": "Actor",
+        "module": module_id
     },
     "moves": {
         "name": "moves",
         "label": "Pokemon Moves",
         "path": "packs/p5e-moves.db",
-        "entity": "Item",
-        "module": module_name
+        "type": "Item",
+        "module": module_id
     },
     "abilities": {
         "name": "abilities",
         "label": "Pokemon Abilities",
         "path": "packs/p5e-abilities.db",
-        "entity": "Item",
-        "module": module_name
+        "type": "Item",
+        "module": module_id
     }
 }
