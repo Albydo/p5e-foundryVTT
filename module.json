@@ -8,33 +8,35 @@
     }
   ],
   "version": "1.1.0.201220",
-  "minimumCoreVersion": "10",
   "compatibleCoreVersion": "12",
   "compatibility": {
     "minimum": "10",
     "verified": "12"
   },
   "url": "https://github.com/Albydo/p5e-foundryVTT",
-  "manifest": "https://raw.githubusercontent.com/Albydo/p5e-foundryVTT/edit/master/module.json",
-  "download": "https://github.com/Jerakin/p5e-foundryVTT/releases/download/v1.1.0.201220/Pokemon5e.zip",
+  "manifest": "https://raw.githubusercontent.com/Albydo/p5e-foundryVTT/master/module.json",
+  "download": "https://github.com/Albydo/p5e-foundryVTT/releases/download/v1.1.0.201220/Pokemon5e.zip",
   "packs": [
     {
       "name": "pokemon",
       "label": "Pokemon",
       "path": "packs/p5e-pokemon.db",
-      "type": "Actor"
+      "type": "Actor",
+      "module": "pokemon5e"
     },
     {
       "name": "moves",
       "label": "Pokemon Moves",
       "path": "packs/p5e-moves.db",
-      "type": "Item"
+      "type": "Item",
+      "module": "pokemon5e"
     },
     {
       "name": "abilities",
       "label": "Pokemon Abilities",
       "path": "packs/p5e-abilities.db",
-      "type": "Item"
+      "type": "Item",
+      "module": "pokemon5e"
     }
   ]
 }
