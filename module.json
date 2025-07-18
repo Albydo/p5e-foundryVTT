@@ -16,7 +16,7 @@
   },
   "url": "https://github.com/Albydo/p5e-foundryVTT",
   "manifest": "https://raw.githubusercontent.com/Albydo/p5e-foundryVTT/master/module.json",
-  "download": "https://github.com/Albydo/p5e-foundryVTT/releases/download/v1.1.0.250718/pokemon5e.zip",
+  
   "packs": [
     {
       "name": "pokemon",
